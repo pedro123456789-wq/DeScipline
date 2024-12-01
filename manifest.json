@@ -1,0 +1,12 @@
+{
+    "manifest_version": 3,
+    "name": "DeScipline",
+    "description": "A Chrome extension built on starknet",
+    "version": "1.0",
+    "action": {
+      "default_popup": "popup.html"
+    },
+    "permissions": [
+      "storage"
+    ]
+  }
