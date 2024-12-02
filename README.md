@@ -2,7 +2,7 @@
 ## Future of Blockchain University Hackathon 2024
 
 <div align="center">
-  ![Nethermind Logo](images/Nethermind_Light_Horizontal.png)
+  <img src="images/Nethermind_Light_Horizontal.png" alt="Nethermind Logo" />
 </div>
 
 ### Track: Build Starknet.anything
