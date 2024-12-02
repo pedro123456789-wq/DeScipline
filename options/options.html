@@ -1,21 +1,44 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>Extension Options</title>
-  <link rel="stylesheet" href="options.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DeScipline - Wallet Connection</title>
+    <link rel="stylesheet" href="options.css">
 </head>
 <body>
-  <div class="options-container">
-    <h1>Extension Options</h1>
-    <form id="optionsForm">
-      <label for="option1">Option 1:</label>
-      <input type="text" id="option1" name="option1"><br><br>
-      <label for="option2">Option 2:</label>
-      <input type="checkbox" id="option2" name="option2"><br><br>
-      <button type="submit">Save Options</button>
-    </form>
-    <div id="status"></div>
-  </div>
-  <script src="options.js"></script>
+    <div class="container">
+        <h1>Connect Your Wallet</h1>
+        <div class="wallet-section">
+            <div id="connection-status" class="status-box">
+                <span class="status-dot"></span>
+                <span id="status-text">Not Connected</span>
+            </div>
+            
+            <div class="wallet-buttons">
+                <button id="connect-argent" class="wallet-btn argent">
+                    <img src="../images/argent.png" alt="Argent X">
+                    <span>Connect with Argent X</span>
+                </button>
+                <button id="connect-braavos" class="wallet-btn braavos">
+                    <img src="../images/braavos.png" alt="Braavos">
+                    <span>Connect with Braavos</span>
+                </button>
+            </div>
+
+            <div id="wallet-info" class="wallet-info" style="display: none;">
+                <h3>Wallet Information</h3>
+                <div class="info-item">
+                    <span class="label">Address:</span>
+                    <span id="wallet-address" class="value">-</span>
+                </div>
+                <div class="info-item">
+                    <span class="label">Balance:</span>
+                    <span id="wallet-balance" class="value">-</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="options.js"></script>
 </body>
 </html>

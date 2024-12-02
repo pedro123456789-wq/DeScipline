@@ -3,7 +3,21 @@
   "name": "DeScipline",
   "version": "1.0",
   "description": "A multi-page Chrome extension for DeScipline",
-  "permissions": ["activeTab", "scripting", "storage"],
+  "permissions": [
+    "activeTab",
+    "scripting",
+    "storage"
+  ],
+  "host_permissions": [
+    "http://*/*",
+    "https://*/*"
+  ],
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["starknet-provider.js"]
+    }
+  ],
   "action": {
     "default_popup": "popup/popup.html",
     "default_icon": {
@@ -24,4 +38,3 @@
     "128": "images/Nethermind_Icon_Colour.png"
   }
 }
-

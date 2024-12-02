@@ -1,79 +1,77 @@
+// Initialize UI elements
+let mainPage, secondPage, disciplinePage, actionButton, statusDiv, goToSecondPageButton;
+let backToMainButton, backFromDisciplineButton, optionsButton, aboutButton;
+
+function initializeElements() {
+    mainPage = document.getElementById('main-page');
+    secondPage = document.getElementById('second-page');
+    disciplinePage = document.getElementById('discipline-page');
+    actionButton = document.getElementById('actionButton');
+    statusDiv = document.getElementById('status');
+    goToSecondPageButton = document.getElementById('goToSecondPage');
+    backToMainButton = document.getElementById('backToMain');
+    backFromDisciplineButton = document.getElementById('backFromDiscipline');
+    optionsButton = document.getElementById('optionsButton');
+    aboutButton = document.getElementById('aboutButton');
+
+    // Verify all required elements are present
+    const elements = {
+        mainPage, secondPage, disciplinePage, actionButton, statusDiv,
+        goToSecondPageButton, backToMainButton, backFromDisciplineButton,
+        optionsButton, aboutButton
+    };
+
+    for (const [name, element] of Object.entries(elements)) {
+        if (!element) {
+            console.error(`Required element not found: ${name}`);
+            return false;
+        }
+    }
+    return true;
+}
+
+function showPage(pageToShow) {
+    // Hide all pages
+    const pages = [mainPage, secondPage, disciplinePage];
+    pages.forEach(page => {
+        if (page) page.style.display = 'none';
+    });
+    
+    // Show the requested page
+    if (pageToShow) {
+        pageToShow.style.display = 'flex';
+    }
+}
+
 document.addEventListener('DOMContentLoaded', function() {
-    const mainPage = document.getElementById('main-page');
-    const secondPage = document.getElementById('second-page');
-    const actionButton = document.getElementById('actionButton');
-    const statusDiv = document.getElementById('status');
-    const goToSecondPageButton = document.getElementById('goToSecondPage');
-    const backToMainButton = document.getElementById('backToMain');
-    const optionsButton = document.getElementById('optionsButton');
-    const aboutButton = document.getElementById('aboutButton');
-  
+    if (!initializeElements()) {
+        console.error('Failed to initialize elements');
+        return;
+    }
+
     // Navigation
-    goToSecondPageButton.addEventListener('click', function() {
-      mainPage.style.display = 'none';
-      secondPage.style.display = 'flex';
+    goToSecondPageButton.addEventListener('click', () => showPage(secondPage));
+    backToMainButton.addEventListener('click', () => showPage(mainPage));
+    backFromDisciplineButton.addEventListener('click', () => showPage(mainPage));
+
+    // Action button now navigates to discipline page
+    actionButton.addEventListener('click', () => {
+        showPage(disciplinePage);
+        // Initialize session time
+        document.getElementById('session-time').textContent = '00:00:00';
+        document.getElementById('focus-level').textContent = 'High';
     });
-  
-    backToMainButton.addEventListener('click', function() {
-      secondPage.style.display = 'none';
-      mainPage.style.display = 'flex';
-    });
-  
-    // Action button functionality
-    actionButton.addEventListener('click', function() {
-      statusDiv.textContent = 'Processing...';
-      
-      chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
-        if (chrome.runtime.lastError) {
-          console.error('Error querying tabs:', chrome.runtime.lastError);
-          statusDiv.textContent = 'Error: ' + chrome.runtime.lastError.message;
-          return;
-        }
-  
-        if (!tabs || tabs.length === 0) {
-          console.error('No tabs found');
-          statusDiv.textContent = 'Error: No active tab found';
-          return;
-        }
-  
-        const currentTab = tabs[0];
-        if (currentTab.url.startsWith('chrome://') || currentTab.url.startsWith('chrome-extension://')) {
-          console.error('Cannot access chrome:// or chrome-extension:// URLs');
-          statusDiv.textContent = 'Error: Cannot modify this page';
-          return;
-        }
-  
-        chrome.scripting.executeScript({
-          target: { tabId: currentTab.id },
-          function: function() {
-            document.body.style.backgroundColor = '#f0f0f0';
-            return 'Background color changed!';
-          }
-        }, function(results) {
-          if (chrome.runtime.lastError) {
-            console.error('Error executing script:', chrome.runtime.lastError);
-            statusDiv.textContent = 'Error: ' + chrome.runtime.lastError.message;
-          } else if (results && results[0]) {
-            statusDiv.textContent = results[0].result;
-          } else {
-            statusDiv.textContent = 'Unknown error occurred';
-          }
-        });
-      });
-    });
-  
+
     // Options and About buttons
     optionsButton.addEventListener('click', function() {
-      if (chrome.runtime.openOptionsPage) {
-        chrome.runtime.openOptionsPage();
-      } else {
-        window.open(chrome.runtime.getURL('options.html'));
-      }
+        if (chrome.runtime.openOptionsPage) {
+            chrome.runtime.openOptionsPage();
+        } else {
+            window.open(chrome.runtime.getURL('options.html'));
+        }
     });
-  
+
     aboutButton.addEventListener('click', function() {
-      chrome.tabs.create({url: chrome.runtime.getURL('about/about.html')});
+        chrome.tabs.create({url: chrome.runtime.getURL('about/about.html')});
     });
-  });
-  
-  
+});

@@ -5,13 +5,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>DeScipline Popup</title>
   <link rel="stylesheet" href="popup.css">
+  <script src="popup.js" defer></script>
 </head>
 <body>
   <div class="popup-container">
     <div id="main-page" class="page">
       <h1>DeScipline</h1>
       <div class="button-group">
-        <button id="actionButton" class="btn">Click Me</button>
+        <button id="actionButton" class="btn">Start DeScipline</button>
         <button id="goToSecondPage" class="btn">Go to Second Page</button>
         <button id="optionsButton" class="btn">Options</button>
         <button id="aboutButton" class="btn">About</button>
@@ -24,9 +25,24 @@
       <p>This is the content of the second page in the popup.</p>
       <button id="backToMain" class="btn">Back to Main</button>
     </div>
-  </div>
 
-  <script src="popup.js"></script>
+    <div id="discipline-page" class="page" style="display: none;">
+      <h2>DeScipline Dashboard</h2>
+      <div class="content">
+        <p>Welcome to your DeScipline dashboard!</p>
+        <div class="stats">
+          <div class="stat-item">
+            <h3>Current Session</h3>
+            <p id="session-time">00:00:00</p>
+          </div>
+          <div class="stat-item">
+            <h3>Focus Level</h3>
+            <p id="focus-level">High</p>
+          </div>
+        </div>
+      </div>
+      <button id="backFromDiscipline" class="btn">Back to Main</button>
+    </div>
+  </div>
 </body>
 </html>
-
