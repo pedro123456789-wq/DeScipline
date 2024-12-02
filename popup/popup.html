@@ -3,25 +3,30 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>My Extension Popup</title>
+  <title>DeScipline Popup</title>
   <link rel="stylesheet" href="popup.css">
 </head>
 <body>
-  <div id="main-page" class="page">
-    <h1>DeScipline</h1>
-    <button id="actionButton">Click Me</button>
-    <div id="status"></div>
-    <button id="goToSecondPage">Go to Second Page</button>
-    <a href="../options/options.html" target="_blank">Options</a>
-    <a href="../about/about.html" target="_blank">About</a>
-  </div>
-  
-  <div id="second-page" class="page" style="display: none;">
-    <h2>Second Page</h2>
-    <p>This is the content of the second page in the popup.</p>
-    <button id="backToMain">Back to Main</button>
+  <div class="popup-container">
+    <div id="main-page" class="page">
+      <h1>DeScipline</h1>
+      <div class="button-group">
+        <button id="actionButton" class="btn">Click Me</button>
+        <button id="goToSecondPage" class="btn">Go to Second Page</button>
+        <button id="optionsButton" class="btn">Options</button>
+        <button id="aboutButton" class="btn">About</button>
+      </div>
+      <div id="status"></div>
+    </div>
+    
+    <div id="second-page" class="page" style="display: none;">
+      <h2>Second Page</h2>
+      <p>This is the content of the second page in the popup.</p>
+      <button id="backToMain" class="btn">Back to Main</button>
+    </div>
   </div>
 
   <script src="popup.js"></script>
 </body>
 </html>
+
