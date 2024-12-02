@@ -1,6 +1,8 @@
 # DeScipline
 ## Future of Blockchain University Hackathon 2024
-![Nethermind Logo](images/Nethermind_Light_Horizontal.png)
+<div align="center">
+  ![Nethermind Logo](images/Nethermind_Light_Horizontal.png)
+</div>
 ### Track: Build Starknet.anything
 Team Members: Pedro Lourenco, Alvin Lam and Alexander Catterall
 
