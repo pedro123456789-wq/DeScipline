@@ -1,9 +1,27 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <title>Popup</title>
-  </head>
-  <body>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Extension Popup</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <div id="main-page" class="page">
     <h1>DeScipline</h1>
-  </body>
+    <button id="actionButton">Click Me</button>
+    <div id="status"></div>
+    <button id="goToSecondPage">Go to Second Page</button>
+    <a href="../options/options.html" target="_blank">Options</a>
+    <a href="../about/about.html" target="_blank">About</a>
+  </div>
+  
+  <div id="second-page" class="page" style="display: none;">
+    <h2>Second Page</h2>
+    <p>This is the content of the second page in the popup.</p>
+    <button id="backToMain">Back to Main</button>
+  </div>
+
+  <script src="popup.js"></script>
+</body>
 </html>

@@ -1,12 +1,32 @@
 {
-    "manifest_version": 3,
-    "name": "DeScipline",
-    "description": "A Chrome extension built on starknet",
-    "version": "1.0",
-    "action": {
-      "default_popup": "popup.html"
-    },
-    "permissions": [
-      "storage"
-    ]
+  "manifest_version": 3,
+  "name": "My Chrome Extension",
+  "version": "1.0",
+  "description": "A multi-page Chrome extension",
+  "permissions": ["activeTab", "scripting", "storage"],
+  "action": {
+    "default_popup": "popup/popup.html",
+    "default_icon": {
+      "16": "images/Nethermind_Icon_Colour.png",
+      "32": "images/Nethermind_Icon_Colour.png",
+      "48": "images/Nethermind_Icon_Colour.png",
+      "128": "images/Nethermind_Icon_Colour.png"
+    }
+  },
+  "options_page": "options/options.html",
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["scripts/react.production.min.js", "scripts/content.js"]
+    }
+  ],
+  "icons": {
+    "16": "images/Nethermind_Icon_Colour.png",
+    "32": "images/Nethermind_Icon_Colour.png",
+    "48": "images/Nethermind_Icon_Colour.png",
+    "128": "images/Nethermind_Icon_Colour.png"
   }
+}
